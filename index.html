@@ -3,17 +3,48 @@
 <head>
   <meta charset="utf-8">
   <title>Vue TODO List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <link rel="stylesheet" href="./main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
+  <div class="container">  
+    <div id="app">
+      <h1>Vue.jsで TODO List</h1>
+      <table v-if="todos.length">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>TODO</th>
+            <th>登録日</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="item in todos"
+            v-bind:key="item.id">
+            <td>{{ item.id }}</td>
+            <td>{{ item.body }}</td>
+            <td>{{ dateFormat(item.created_at) }}</td>
+            <td>
+              <button class="btn red" v-on:click="deleteTodo(item)">削除</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>TODOの追加</h2>
+      <form class="add-form" v-on:submit.prevent="addTodo">
+        TODO <input type="text" ref="body">
+        <button class="btn right" type="submit">追加</button>
+      </form>
 
-  <div id="app">
-    <h1>Vue TODO List</h1>
-
-
+    </div>
   </div>
-
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/ja.js"></script>
   <script src="./main.js"></script>
 </body>
 </html>
