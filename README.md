@@ -1,8 +1,8 @@
-# vue_todo_list
+# VueでTODO List
 
 ## 導入方法
 
-1. `git clone`
+1. `git clone git@github.com:s4na/vue_todo_list.git`
 2. ブラウザで`index.html`にアクセス
 
 ## 動作
